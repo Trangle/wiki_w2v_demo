@@ -5,3 +5,12 @@
 ## 直达号
 * 英文 https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 * 中文 https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
+
+## 步骤
+1. 语料处理：对于英文python process_wiki.py enwiki-latest-pages-articles.xml.bz2 wiki.en.text，对于中文要进行繁体->简体转换，去掉process_wiki.py下的注释（# output.write(space.join([Converter('zh-hans').convert(x.decode('utf-8')) for x in text]).encode('utf-8') + "\n")），并注释掉output.write(space.join(text)+ "\n")，执行python process_wiki.py zhwiki-latest-pages-articles.xml.bz2 wiki.zh.text
+2. 分词：运行fenci.py，更改函数read_file_cut_single相应路径和文件名
+3. 执行word2vec：以中文为例python train_word2vec_model.py wiki.zh.text.seg wiki.zh.text.model wiki.zh.text.vector
+4. 测试：import gensim->gensim.models.Word2Vec.load('wiki.zh.text.model')->result = model.most_similar(u'圣斗士')->for x in result: print x[0],x[1]
+
+----
+*Enjoy It!
