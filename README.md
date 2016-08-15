@@ -12,5 +12,8 @@
 3. 执行word2vec：以中文为例python train_word2vec_model.py wiki.zh.text.seg wiki.zh.text.model wiki.zh.text.vector
 4. 测试：import gensim->gensim.models.Word2Vec.load('wiki.zh.text.model')->result = model.most_similar(u'圣斗士')->for x in result: print x[0],x[1]
 
+## 额外福利
+* 如果你对分词和简繁转换不太关心，那么直接下载分词后的结果将是个不错的选择（链接：http://pan.baidu.com/s/1c9QzvC 密码：ny2m）
+
 ----
 *Enjoy It!
